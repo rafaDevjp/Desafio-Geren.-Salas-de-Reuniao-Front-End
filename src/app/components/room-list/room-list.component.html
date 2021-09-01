@@ -1,1 +1,43 @@
-<p>room-list works!</p>
+
+<section>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-8 p-3">
+                    <table class="table table-striped table-dark text-center">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID Sala</th>
+                            <th scope="col">Sala</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Inicio</th>
+                            <th scope="col">Termio</th>
+                            <th scope="col">Detalhes</th>
+                            <th scope="col">Atualizar</th>
+                            <th scope="col">Deletar</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item of rooms">
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.name}}</td>
+                            <td>{{item.date}}</td>
+                            <td>{{item.startHour}}</td>
+                            <td>{{item.endHour}}</td>
+                            <td>
+                               
+                                <button type="button" (click)="roomDetails(item.id)" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">Visualizar</button>
+                            </td>
+                            <td>
+                                <button type="button" (click)="updateRoom(item.id)" class="btn btn-sm btn-warning">Atualizar</button>
+                            </td>
+                            <td>
+                                <button type="button" (click)="deleteRoom(item.id)" class="btn btn-sm btn-danger">Deletar</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+</section>
+<router-outlet></router-outlet>

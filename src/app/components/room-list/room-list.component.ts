@@ -11,7 +11,7 @@ import { RoomService } from 'src/app/services/room.service';
 })
 export class RoomListComponent implements OnInit {
 
-  rooms:Observable<Room[]>;
+  rooms:Room[]=[] ;
 
   constructor( private roomService:RoomService, private router:Router) { }
 
@@ -20,7 +20,10 @@ export class RoomListComponent implements OnInit {
   }
 
   reloadData(){;
-    this.rooms = this.roomService.getRoomList();
+   this.roomService.getRoomList().subscribe(res =>{
+       this.rooms = res
+       console.log(this.rooms);
+   });
   }
 
   deleteRoom(id: number){
@@ -31,11 +34,11 @@ export class RoomListComponent implements OnInit {
   }
 
   roomDetails(id: number){
-      this.router.navigate(['details', id])
+      this.router.navigate(['components/room-details', id])
   }
 
   updateRoom(id:number){
-    this.router.navigate(['update', id])
+    this.router.navigate(['components/room-update', id])
   }
 
 
